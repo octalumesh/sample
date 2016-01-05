@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
 	
 	//UI Element 
 	SimpleCursorAdapter mSimpleCursorAdapter; 
-	MatrixCursor mMatrixCursor;	
+	MatrixCursor matrixCursor;	 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +28,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         
         // The contacts from the contacts content provider is stored in this cursor
-        mMatrixCursor = new MatrixCursor(new String[] { "_id","name","photo","details"} );
+        matrixCursor = new MatrixCursor(new String[] { "_id","name","photo","details"} );
         
         // Adapter to set data in the listview
         mSimpleCursorAdapter = new SimpleCursorAdapter(getBaseContext(),
@@ -190,12 +190,12 @@ public class MainActivity extends Activity {
 							details += "Title : " + title + "\n";
 						
 						// Adding id, display name, path to photo and other details to cursor
-						mMatrixCursor.addRow(new Object[]{ Long.toString(contactId),displayName,photoPath,details});
+						matrixCursor.addRow(new Object[]{ Long.toString(contactId),displayName,photoPath,details});
 					}
 					
 				}while(contactsCursor.moveToNext());
 			}
-			return mMatrixCursor;
+			return matrixCursor;
 		}
     	
 		@Override
