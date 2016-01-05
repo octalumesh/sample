@@ -18,6 +18,7 @@ import android.widget.ListView;
 
 public class MainActivity extends Activity {
 	
+	//UI Element
 	SimpleCursorAdapter mAdapter;
 	MatrixCursor mMatrixCursor;	
 
