@@ -19,7 +19,7 @@ import android.widget.ListView;
 public class MainActivity extends Activity {
 	
 	//UI Element 
-	SimpleCursorAdapter mAdapter;
+	SimpleCursorAdapter mSimpleCursorAdapter; 
 	MatrixCursor mMatrixCursor;	
 
     @Override
@@ -31,7 +31,7 @@ public class MainActivity extends Activity {
         mMatrixCursor = new MatrixCursor(new String[] { "_id","name","photo","details"} );
         
         // Adapter to set data in the listview
-        mAdapter = new SimpleCursorAdapter(getBaseContext(),
+        mSimpleCursorAdapter = new SimpleCursorAdapter(getBaseContext(),
                 R.layout.lv_layout,
                 null,
                 new String[] { "name","photo","details"},
@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
         ListView lstContacts = (ListView) findViewById(R.id.lst_contacts);
         
         // Setting the adapter to listview
-        lstContacts.setAdapter(mAdapter);        
+        lstContacts.setAdapter(mSimpleCursorAdapter);        
         
         // Creating an AsyncTask object to retrieve and load listview with contacts
         ListViewContactsLoader listViewContactsLoader = new ListViewContactsLoader();
@@ -201,7 +201,7 @@ public class MainActivity extends Activity {
 		@Override
 		protected void onPostExecute(Cursor result) {			
 			// Setting the cursor containing contacts to listview
-			mAdapter.swapCursor(result);
+			mSimpleCursorAdapter.swapCursor(result);
 		}		
     }
 
